@@ -1,23 +1,37 @@
-# Settings for Backend (on Cloud Run).
-# See https://firebase.google.com/docs/app-hosting/configure#cloud-run.
+# Settings for Cloud Run
 runConfig:
-  minInstances: 0
-  # maxInstances: 100
-  # concurrency: 80
-  # cpu: 1
-  # memoryMiB: 512
+  minInstances: 2
+  maxInstances: 100
+  concurrency: 100
+  cpu: 2
+  memoryMiB: 1024
 
-# Environment variables and secrets.
+  
+# Environment variables and secrets
 env:
-  # Configure environment variables.
-  # See https://firebase.google.com/docs/app-hosting/configure#user-defined-environment.
-  - variable: MESSAGE
-    value: Hello world!
-    availability:
-      - BUILD
-      - RUNTIME
+  # - variable: STORAGE_BUCKET
+  #   value: mybucket.appspot.com
+  #   availability:
+  #     - BUILD
+  #     - RUNTIME
 
-  # Configure secrets
-  # See https://firebase.google.com/docs/app-hosting/configure#secret-parameters
-  # - variable: API_KEY
-  #   secret: myApiKeySecret
+  - variable: NEXT_API_KEY
+    secret: projects/389359518314/secrets/NEXT_API_KEY/versions/2
+
+  - variable: NEXT_APP_ID
+    secret: projects/389359518314/secrets/NEXT_APP_ID/versions/1
+
+  - variable: NEXT_AUTH_DOMAIN
+    secret: projects/389359518314/secrets/NEXT_AUTH_DOMAIN/versions/1
+
+  - variable: NEXT_PROJECT_ID
+    secret: projects/389359518314/secrets/NEXT_PROJECT_ID/versions/1
+
+  - variable: NEXT_STORAGE_BUCKET
+    secret: projects/389359518314/secrets/NEXT_STORAGE_BUCKET/versions/1
+
+  - variable: NEXT_MESSAGING_SENDER_ID
+    secret: projects/389359518314/secrets/NEXT_MESSAGING_SENDER_ID/versions/1
+    
+  - variable: NEXT_MEASUREMENT_ID
+    secret: projects/389359518314/secrets/NEXT_MEASUREMENT_ID/versions/1
